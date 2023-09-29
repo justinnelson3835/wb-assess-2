@@ -1,0 +1,29 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+table {
+    margin-top: 50px;
+    border: 1px solid white;
+    
+    
+}
+
+th, td {
+    border: 1px solid white;
+    padding: 5px;
+}
+
+form {
+    margin-top:10px;
+}
+input {
+    margin-bottom:20px;
+}
+
+select {
+    margin-bottom:20px;
+}
