@@ -9,6 +9,16 @@
 // should switch from "Log Out" to "Log In".
 
 /// TODO: replace this with your code
+const button = document.getElementById('auth');
+
+button.addEventListener('click', () => {
+    if (button.innerText === "Log in") {
+        button.innerText = "Log out";
+    } else {
+        button.innerText = "Log in";
+    }
+});
+
 
 // Send an alert
 //
@@ -18,6 +28,17 @@
 // text box. Then, they can submit the form to trigger the alert.
 
 /// TODO: replace this with your code
+
+let btn = document.querySelector('#submit'); 
+
+btn.addEventListener('click', (evt) => { 
+    evt.preventDefault();
+    const message = document.querySelector('#alert-message').innerText;
+    if (message === 'true') { 
+      alert(message);
+    }
+});
+
 
 // Add an item
 //
