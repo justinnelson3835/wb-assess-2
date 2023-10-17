@@ -8,14 +8,13 @@
 // update and say "Log out". If a user clicks on the button again, its text
 // should switch from "Log Out" to "Log In".
 
-/// TODO: replace this with your code
-const button = document.getElementById('auth');
+const authbutton = document.getElementById("auth");
 
-button.addEventListener('click', () => {
-    if (button.innerText === "Log in") {
-        button.innerText = "Log out";
+authbutton.addEventListener("click", function () {
+    if (authbutton.innerText === "Log In") {
+        authbutton.innerText = "Log Out";
     } else {
-        button.innerText = "Log in";
+        authbutton.innerText = "Log In";
     }
 });
 
@@ -31,9 +30,9 @@ button.addEventListener('click', () => {
 
 let btn = document.querySelector('#submit'); 
 
-btn.addEventListener('click', (evt) => { 
+btn.addEventListener('submit', (evt) => { 
     evt.preventDefault();
-    const message = document.querySelector('#alert-message').innerText;
+    const message = document.querySelector('#alert-message');
     if (message === 'true') { 
       alert(message);
     }
@@ -55,7 +54,16 @@ btn.addEventListener('click', (evt) => {
 //     <li>Item</li>  <!-- This was added after double-clicking -->
 //   </ol>
 
-/// TODO: replace this with your code
+const addButton = document.getElementById("item-adder");
+const list = document.getElementById("list");
+
+addButton.addEventListener("click", function() {
+    const newItem = document.createElement("li");
+    newItem.textContent = "Item";
+    list.appendChild(newItem);
+});
+
+
 
 // Change colors
 //
@@ -66,7 +74,21 @@ btn.addEventListener('click', (evt) => {
 // Clicking on "Turn Stuff Red" should make text red and clicking on "Turn
 // Stuff Blue" should make text blue.
 
-/// TODO: replace this with your code
+const blueButton = document.getElementById("blue");
+const redButton = document.getElementById("red");
+const colorElements = document.querySelectorAll(".changes-colors");
+
+blueButton.addEventListener("click", function() {
+    colorElements.forEach(element => {
+        element.style.color = "blue";
+    });
+});
+
+redButton.addEventListener("click", function() {
+    colorElements.forEach(element => {
+        element.style.color = "red";
+    });
+});
 
 // Calculate factorial
 //
@@ -83,7 +105,33 @@ btn.addEventListener('click', (evt) => {
 //   - calls your function that calculates a factorial
 //   - puts the result of the function inside the "result" span
 
-/// TODO: replace this with your code
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("factorial-calculator");
+    const resultSpan = document.getElementById("result");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const input = document.getElementById("factorial-input");
+        const inputValue = parseInt(input.value, 10);
+
+        if (!isNaN(inputValue) && inputValue >= 0) {
+            const factorialResult = calculateFactorial(inputValue);
+            resultSpan.textContent = `Factorial: ${factorialResult}`;
+        } else {
+            resultSpan.textContent = "Please enter a positive integer.";
+        }
+    });
+
+    function calculateFactorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        } else {
+            return n * calculateFactorial(n - 1);
+        }
+    }
+});
+
 
 // Validate a form
 //
@@ -100,4 +148,23 @@ btn.addEventListener('click', (evt) => {
 // the feedback text to say "The word must be at least 4 characters long." and
 // change the color of the text to red..
 
-/// TODO: replace this with your code
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("recommend-word");
+    const wordInput = document.getElementById("word");
+    const feedback = document.querySelector(".form-feedback");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const inputValue = wordInput.value.trim();
+
+        if (inputValue.length >= 4) {
+            feedback.textContent = "Thanks for your submission!";
+            feedback.style.color = "green";
+        } else {
+            feedback.textContent = "The word must be at least 4 characters long.";
+            feedback.style.color = "red";
+        }
+    });
+});
+
